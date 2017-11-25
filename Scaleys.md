@@ -68,7 +68,7 @@ Citizen.CreateThread(function()
 end)
 ```
 # Hud rankup bar
-
+![Scale](http://illusivetea.me/WhyIsThereSoManyFuckingRpServers/321Bf3A8E14W3wc5d0vc.png)
 ```
 Citizen.CreateThread(function()
     function Initialize(currentRankLimit, nextRankLimit, playersPreviousXP, playersCurrentXP, rank)
