@@ -160,3 +160,43 @@ Citizen.CreateThread(function()
 end)
 ```
 
+```
+Citizen.CreateThread(function()
+    function Initialize(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+
+        PushScaleformMovieFunction(scaleform, "SHOW_HEALTH_ARMOUR")
+        PushScaleformMovieFunctionParameterBool(true)
+        PopScaleformMovieFunctionVoid()
+
+        return scaleform
+    end
+    scaleform = Initialize("MINIMAP")
+    function Initialize2(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+
+        PushScaleformMovieFunction(scaleform, "")
+        PushScaleformMovieFunctionParameterInt(1)
+        PopScaleformMovieFunctionVoid()
+
+        return scaleform
+    end
+    scaleform2 = Initialize("MINIMAP_MAIN_MAP")
+    while true do
+        Citizen.Wait(0)
+        --DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+        --DrawScaleformMovieFullscreen(scaleform2, 255, 255, 255, 255, 0)
+        x,y,z = table.unpack(GetEntityCoords(PlayerPedId(),true))
+        --DrawScaleformMovie_3dNonAdditive(scaleform, x+4.5,y+5.0,z-2.0, 0.0, 0.0, 0.0, 1.0, 1, 1, 10.0, 6.0, 6.0, 0)
+        --DrawScaleformMovie_3dNonAdditive(scaleform2, x+4.5,y+5.0,z-2.0, 0.0, 0.0, 0.0, 1.0, 1, 1, 10.0, 6.0, 6.0, 0)
+    end
+end)
+
+```
+
