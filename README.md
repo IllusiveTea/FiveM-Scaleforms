@@ -200,3 +200,61 @@ end)
 
 ```
 
+```
+--[[
+PushScaleformMovieFunctionParameterString()
+PushScaleformMovieFunctionParameterInt()
+PushScaleformMovieFunctionParameterFloat()
+PushScaleformMovieFunctionParameterBool()
+]]
+-- SET_GRID_ITEM(i, sTitle, sTXD, sTXN, textureLoadType, verifiedType, eIcon, bCheck, rpMult, cashMult, bDisabled, iconCol)
+Citizen.CreateThread(function()
+    function Initialize(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+
+        PushScaleformMovieFunction(scaleform, "SET_TITLE")
+        PushScaleformMovieFunctionParameterString("What Next?")
+        PushScaleformMovieFunctionParameterString("Votes: ")
+        PopScaleformMovieFunctionVoid()
+
+        PushScaleformMovieFunction(scaleform, "SET_GRID_ITEM")
+        PushScaleformMovieFunctionParameterInt(0)
+        PushScaleformMovieFunctionParameterString("Some Cool Race")
+        PushScaleformMovieFunctionParameterString("Votes: ")
+        PushScaleformMovieFunctionParameterString("Votes: ")
+        PushScaleformMovieFunctionParameterInt(1)
+        PushScaleformMovieFunctionParameterString("No")
+        PushScaleformMovieFunctionParameterInt(2)
+        PushScaleformMovieFunctionParameterInt(2)
+        PushScaleformMovieFunctionParameterInt(3)
+        PushScaleformMovieFunctionParameterInt(1)
+        PushScaleformMovieFunctionParameterInt(1)
+        PopScaleformMovieFunctionVoid()
+
+        PushScaleformMovieFunction(scaleform, "SET_GRID_ITEM")
+        PushScaleformMovieFunctionParameterInt(0)
+        PushScaleformMovieFunctionParameterString("Some Cool Race")
+        PushScaleformMovieFunctionParameterString("Votes: ")
+        PushScaleformMovieFunctionParameterString("Votes: ")
+        PushScaleformMovieFunctionParameterInt(1)
+        PushScaleformMovieFunctionParameterInt(1)
+        PushScaleformMovieFunctionParameterInt(2)
+        --PushScaleformMovieFunctionParameterInt(0)
+        --PushScaleformMovieFunctionParameterInt(0)
+        PushScaleformMovieFunctionParameterInt(1)
+        PushScaleformMovieFunctionParameterInt(1)
+        PopScaleformMovieFunctionVoid()
+
+        return scaleform
+    end
+    scaleform = Initialize("mp_next_job_selection")
+    while true do
+        Citizen.Wait(0)
+        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+    end
+end)
+```
+
