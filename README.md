@@ -137,3 +137,26 @@ Citizen.CreateThread(function()
 end)
 ```
 
+# TRAFFIC_CAM
+
+```
+Citizen.CreateThread(function()
+    function Initialize(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+
+        PushScaleformMovieFunction(scaleform, "PLAY_CAM_MOVIE")
+        PopScaleformMovieFunctionVoid()
+
+        return scaleform
+    end
+    scaleform = Initialize("TRAFFIC_CAM")
+    while true do
+        Citizen.Wait(0)
+        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+    end
+end)
+```
+
