@@ -103,3 +103,37 @@ end)
 
 
 ```
+
+# MULTIPLAYER_CHAT
+
+```
+Citizen.CreateThread(function()
+    function Initialize(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+
+        PushScaleformMovieFunction(scaleform, "showInput")
+        PushScaleformMovieFunctionParameterInt(2)
+        PushScaleformMovieFunctionParameterInt(2)
+        PopScaleformMovieFunctionVoid()
+
+        PushScaleformMovieFunction(scaleform, "ADD_MESSAGE")
+        PushScaleformMovieFunctionParameterString("Blü")
+        PushScaleformMovieFunctionParameterString("Fuck David")
+        PushScaleformMovieFunctionParameterString("Hate")
+        PushScaleformMovieFunctionParameterBool(false)
+        PushScaleformMovieFunctionParameterInt(9)
+        PopScaleformMovieFunctionVoid()
+
+        return scaleform
+    end
+    scaleform = Initialize("MULTIPLAYER_CHAT")
+    while true do
+        Citizen.Wait(0)
+        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+    end
+end)
+```
+
