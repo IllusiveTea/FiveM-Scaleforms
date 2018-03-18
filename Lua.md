@@ -258,3 +258,76 @@ Citizen.CreateThread(function()
 end)
 ```
 
+#Doomsday bunker screen
+```
+function CreateNamedRenderTargetForModel(name, model)
+	local handle = 0
+	
+	if not IsNamedRendertargetRegistered(name) then
+		RegisterNamedRendertarget(name, 0)
+	end
+	if not IsNamedRendertargetLinked(model) then
+		LinkNamedRendertarget(model)
+	end
+	if IsNamedRendertargetRegistered(name) then
+		handle = GetNamedRendertargetRenderId(name)
+	end
+
+	return handle
+end
+
+function Initialize(scaleform)
+        local scaleform = RequestScaleformMovie(scaleform)
+
+        while not HasScaleformMovieLoaded(scaleform) do
+            Citizen.Wait(0)
+        end
+        PushScaleformMovieFunction(scaleform, "SHOW_LAUNCH")
+		PushScaleformMovieFunctionParameterBool(false)
+		PushScaleformMovieFunctionParameterString("This is a heist")
+		PushScaleformMovieFunctionParameterString("IllusiveTea")
+		PushScaleformMovieFunctionParameterString("A mission")
+		PushScaleformMovieFunctionParameterString("Suck a huge cock")
+		PushScaleformMovieFunctionParameterString("2,000,000")
+		PushScaleformMovieFunctionParameterString("3_4_b_setup_03")
+		PushScaleformMovieFunctionParameterString("prop_screen_nhp_base3")
+		--SHOW_LAUNCH(skipLoader, title, gangName, missionName, description, cost, texture, txd)
+        PopScaleformMovieFunctionVoid()
+		
+        return scaleform
+    end
+
+function LoadSprite(dict)
+	if not HasStreamedTextureDictLoaded(dict) then
+		RequestStreamedTextureDict(dict)
+		while not HasStreamedTextureDictLoaded(dict) do
+			Wait(0)
+		end
+	end
+	return dict
+end
+
+Citizen.CreateThread(function ()
+	--SetEntityCoords(PlayerPedId(), 483.2006225586, 4810.5405273438, -58.919288635254, 18.04705619812, 0, 0, 0, 0)
+	local model = GetHashKey("xm_prop_x17dlc_monitor_wall_01a"); -- 2054093856
+	local pos = { x = -810.59, y = 170.46, z = 77.25 };
+	local entity = GetClosestObjectOfType(pos.x, pos.y, pos.z, 0.05, model, 0, 0, 0)
+	local handle = CreateNamedRenderTargetForModel("Prop_x17DLC_Monitor_Wall_01a", model)
+	LoadSprite("prop_screen_nhp_base3")
+	scaleform = Initialize("iaa_heist_board")
+	while true do
+		local rainbow = RGBRainbow(1)
+		--Set_2dLayer(4)
+		Citizen.InvokeNative(0xC6372ECD45D73BCD, 1)
+		Citizen.InvokeNative(0xE6A9F00D4240B519,scaleform, 1)
+		SetTextRenderId(handle)
+			--DrawRect(0.5, 0.5, 1.0, 1.0, 255, 0, 0, 255)
+			DrawScaleformMovie(scaleform, 0.5, 0.501, 1.0, 1.0, 255, 255, 255, 255, 1)
+			--DrawSprite(LoadSprite("prop_screen_nhp_base3"), "3_4_b_setup_03", 0.5, 0.5, 1.0, 1.0, 0.0, 255, 255, 255, 255)
+		SetTextRenderId(GetDefaultScriptRendertargetRenderId()) -- reset
+		Citizen.InvokeNative(0xC6372ECD45D73BCD, 0)
+		Citizen.Wait(0)
+	end
+end)
+```
+
