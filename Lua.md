@@ -316,7 +316,6 @@ Citizen.CreateThread(function ()
 	LoadSprite("prop_screen_nhp_base3")
 	scaleform = Initialize("iaa_heist_board")
 	while true do
-		local rainbow = RGBRainbow(1)
 		--Set_2dLayer(4)
 		Citizen.InvokeNative(0xC6372ECD45D73BCD, 1)
 		Citizen.InvokeNative(0xE6A9F00D4240B519,scaleform, 1)
