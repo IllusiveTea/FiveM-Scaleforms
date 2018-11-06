@@ -317,14 +317,14 @@ Citizen.CreateThread(function ()
 	scaleform = Initialize("iaa_heist_board")
 	while true do
 		--Set_2dLayer(4)
-		Citizen.InvokeNative(0xC6372ECD45D73BCD, 1)
-		Citizen.InvokeNative(0xE6A9F00D4240B519,scaleform, 1)
+		SetScriptGfxDrawBehindPausemenu(true)
+		N_0xe6a9f00d4240b519(scaleform, 1)
 		SetTextRenderId(handle)
 			--DrawRect(0.5, 0.5, 1.0, 1.0, 255, 0, 0, 255)
 			DrawScaleformMovie(scaleform, 0.5, 0.501, 1.0, 1.0, 255, 255, 255, 255, 1)
 			--DrawSprite(LoadSprite("prop_screen_nhp_base3"), "3_4_b_setup_03", 0.5, 0.5, 1.0, 1.0, 0.0, 255, 255, 255, 255)
 		SetTextRenderId(GetDefaultScriptRendertargetRenderId()) -- reset
-		Citizen.InvokeNative(0xC6372ECD45D73BCD, 0)
+		SetScriptGfxDrawBehindPausemenu(false)
 		Citizen.Wait(0)
 	end
 end)
