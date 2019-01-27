@@ -83,3 +83,27 @@ Citizen.CreateThread(function()
     s:CallFunction("SHOW_TICKER", true) -- SHOW_TICKER(value)
 end)
 ```
+
+
+# DASHBOARD
+
+https://images.illusivetea.me/4A97h3.png
+```lua
+local s
+
+Citizen.CreateThread(function()
+    s = Scaleform.Request("dashboard")
+    while true do
+        Citizen.Wait(0)
+        --s:Draw2D()
+    end
+end)
+
+Citizen.CreateThread(function()
+    while not s do Citizen.Wait(0) end
+    while true do
+        Wait(0)
+        s:CallFunction("SET_RADIO", "80.32", "Glonch FM", "IceHax", "KABOOM!") --SET_RADIO(tuning, station, artist, song)
+    end
+end)
+```
