@@ -1,4 +1,5 @@
-# https://images.illusivetea.me/2X36N2.png
+# MP_MISSION_NAME_FREEMODE
+https://images.illusivetea.me/2X36N2.png
 
 ```lua
 local s
