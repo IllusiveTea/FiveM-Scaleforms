@@ -119,3 +119,48 @@ Citizen.CreateThread(function()
     s:CallHudFunction("SET_DIRECTOR_MODE_TEXT", "DIRECTOR MODE")
 end)
 ```
+
+# GTA:O News screens
+
+https://images.illusivetea.me/2Bd460.jpg
+```lua
+local s
+
+local x, y, z = -1322.99, -2819.82, 13.94--table.unpack(GetEntityCoords(PlayerPedId()))
+
+Citizen.CreateThread(function()
+    SwitchOutPlayer(PlayerPedId(),0,1)
+	Wait(500)
+    s = Scaleform.Request("GTAV_ONLINE")
+    while true do
+        Citizen.Wait(0)
+        if GetPlayerSwitchState() == 3 or GetPlayerSwitchState() == 5 then
+            s:Draw2D()
+            HideHudAndRadarThisFrame()
+        end
+    end
+end)
+
+function LoadDict(dict)
+    RequestStreamedTextureDict(dict)
+    while not HasStreamedTextureDictLoaded(dict) do Wait(0) end
+end
+
+local Description = [[
+Here you can describe your server.
+It is very cool serber with good rp.
+no failrp its bad.
+stop it.
+]]
+
+Citizen.CreateThread(function()
+    while not s do Citizen.Wait(0) end
+    s:CallFunction("SETUP_TABS", 1, false)
+    LoadDict("www_arenawar_tv")
+    s:CallFunction("SETUP_TABS", true)
+    s:CallFunction("SET_BIGFEED_INFO", "Hello", Description, 0, "www_arenawar_tv", "bg_top_left", "Hello there, "..GetPlayerName(PlayerId()), "deprecated", "Welcome To XYZ!", 0)
+    s:CallFunction("SET_NEWS_CONTEXT", 0)
+    Wait(10000)
+    N_0xd8295af639fd9cb8(PlayerPedId())
+end)
+```
