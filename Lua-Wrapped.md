@@ -108,7 +108,8 @@ Citizen.CreateThread(function()
 end)
 ```
 # Director Mode HUD
-https://images.illusivetea.me/6Xa2Rd.png
+
+
 ```lua
 Citizen.CreateThread(function()
     s = Scaleform.RequestHud(20)
