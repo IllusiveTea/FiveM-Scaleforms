@@ -1,5 +1,5 @@
 # MP_MISSION_NAME_FREEMODE
-https://images.illusivetea.me/2X36N2.png
+
 
 ```lua
 local s
@@ -24,7 +24,7 @@ end)
 
 # RACE_POSITION
 
-https://images.illusivetea.me/2685H9.jpg
+
 
 ```lua
 local s
@@ -62,7 +62,7 @@ end)
 
 # SOCIAL_CLUB_TV
 
-https://images.illusivetea.me/4Q08a7.jpg
+
 ```lua
 local s
 
@@ -87,7 +87,7 @@ end)
 
 # DASHBOARD
 
-https://images.illusivetea.me/4A97h3.png
+
 ```lua
 local s
 
