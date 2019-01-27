@@ -59,3 +59,27 @@ Citizen.CreateThread(function()
     --SHOW_RACE_MODULE(enum, show) dunno
 end)
 ```
+
+# SOCIAL_CLUB_TV
+
+https://images.illusivetea.me/4Q08a7.jpg
+```lua
+local s
+
+Citizen.CreateThread(function()
+    s = Scaleform.Request("social_club_tv")
+    while true do
+        Citizen.Wait(0)
+        s:Draw2D()
+    end
+end)
+
+Citizen.CreateThread(function()
+    while not s do Citizen.Wait(0) end
+    s:CallFunction("SET_LIVE_PANEL", "LIVE", "Here is a user", "BOB", "___HEYO", "", "") -- SET_LIVE_PANEL(title, description, player, crewTag, txd, txn)
+    s:CallFunction("SHOW_LIVE_PANEL", true) -- SHOW_LIVE_PANEL(value)
+    s:CallFunction("SET_TICKER_TITLE", "Ghostly Snailium discovers new doggo breed") -- SET_TICKER_TITLE(title)
+    s:CallFunction("ADD_TICKER_TEXT", "what does this do?", "yo", "hey", "IllusiveTea is cool") -- ADD_TICKER_TEXT()
+    s:CallFunction("SHOW_TICKER", true) -- SHOW_TICKER(value)
+end)
+```
