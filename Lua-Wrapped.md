@@ -107,3 +107,15 @@ Citizen.CreateThread(function()
     end
 end)
 ```
+# Director Mode HUD
+https://images.illusivetea.me/6Xa2Rd.png
+```lua
+Citizen.CreateThread(function()
+    s = Scaleform.RequestHud(20)
+end)
+
+Citizen.CreateThread(function()
+    while not s do Citizen.Wait(0) end
+    s:CallHudFunction("SET_DIRECTOR_MODE_TEXT", "DIRECTOR MODE")
+end)
+```
