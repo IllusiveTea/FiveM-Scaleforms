@@ -1,5 +1,5 @@
 # MP_MISSION_NAME_FREEMODE
-https://images.illusivetea.me/2X36N2.png
+![scaley](https://github.com/illusivetea/FiveM-Scaleforms/blob/master/images/scaley1.png?raw=true)
 
 ```lua
 local s
@@ -23,8 +23,7 @@ end)
 ```
 
 # RACE_POSITION
-
-https://images.illusivetea.me/2685H9.jpg
+![scaley](https://github.com/illusivetea/FiveM-Scaleforms/blob/master/images/scaley2.jpg?raw=true)
 
 ```lua
 local s
@@ -61,8 +60,8 @@ end)
 ```
 
 # SOCIAL_CLUB_TV
+![scaley](https://github.com/illusivetea/FiveM-Scaleforms/blob/master/images/scaley3.jpg?raw=true)
 
-https://images.illusivetea.me/4Q08a7.jpg
 ```lua
 local s
 
@@ -86,8 +85,8 @@ end)
 
 
 # DASHBOARD
+![scaley](https://github.com/illusivetea/FiveM-Scaleforms/blob/master/images/scaley4.png?raw=true)
 
-https://images.illusivetea.me/4A97h3.png
 ```lua
 local s
 
@@ -108,7 +107,8 @@ Citizen.CreateThread(function()
 end)
 ```
 # Director Mode HUD
-https://images.illusivetea.me/6Xa2Rd.png
+![scaley](https://github.com/illusivetea/FiveM-Scaleforms/blob/master/images/scaley5.png?raw=true)
+
 ```lua
 Citizen.CreateThread(function()
     s = Scaleform.RequestHud(20)
